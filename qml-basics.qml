@@ -122,6 +122,8 @@ Item {
         }
 
         Button {
+            width: root.width / 10
+            height: width
             text: qsTr("+")
             textColor: "darkgray"
             textFont {
@@ -138,6 +140,8 @@ Item {
             }
         }
         Button {
+            width: root.width / 10
+            height: width
             text: qsTr("-")
             textColor: "darkgray"
             textFont {
@@ -154,6 +158,8 @@ Item {
             }
         }
         Button {
+            width: root.width / 10
+            height: width
             text: qsTr("X")
             textColor: "darkgray"
             textFont {
