@@ -13,12 +13,13 @@ Item {
     property int padding
     property alias borderRadius: button.radius
     property bool isPressed
-    property bool enabled
+    property bool enable
 
     signal clicked()
     signal pressed()
     signal released()
     signal pressAndHold()
+
 
     width: innerText.contentWidth + 2*padding
     height: innerText.contentHeight + 2*padding
@@ -26,12 +27,12 @@ Item {
     Rectangle {
         id: button
         anchors.fill: parent
-        color: enabled ? (isPressed ? root.pressedColor : root.color) : root.dimmedColor
+        color: enable ? (isPressed ? root.pressedColor : root.color) : root.dimmedColor
 
         Behavior on color {
 
             ColorAnimation {
-                duration: 100
+                duration: 200
             }
         }
 

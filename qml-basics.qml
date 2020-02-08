@@ -12,7 +12,7 @@ Item {
         id: draw
         anchors.fill: parent
         color: currentColor
-        lineWidth: 5
+        lineWidth: 1
     }
 
     RowLayout {
@@ -122,6 +122,7 @@ Item {
         }
 
         Button {
+            id: increase
             width: root.width / 10
             height: width
             text: qsTr("+")
@@ -130,16 +131,23 @@ Item {
                 pointSize: 48
             }
             color: "lightgray"
-            dimmedColor: "gray"
+            dimmedColor: "whitesmoke"
             pressedColor: "white"
             padding: 10
             borderRadius: 4
-            enabled: true
+            enable: true
             onClicked: {
-                draw.lineWidth += 1
+                if (draw.lineWidth < 100)
+                    draw.lineWidth += 1
+                if (draw.lineWidth > 100) {
+                    console.log("Here")
+                    increase.enable = false
+                }
+                if (draw.lineWidth > 1) decrease.enable = true
             }
         }
         Button {
+            id: decrease
             width: root.width / 10
             height: width
             text: qsTr("-")
@@ -148,13 +156,19 @@ Item {
                 pointSize: 48
             }
             color: "lightgray"
-            dimmedColor: "gray"
+            dimmedColor: "whitesmoke"
             pressedColor: "white"
             padding: 10
             borderRadius: 4
-            enabled: true
+            enable: true
             onClicked: {
-                draw.lineWidth -= 1
+                if (draw.lineWidth > 1)
+                    draw.lineWidth -= 1
+                if (draw.lineWidth < 2) {
+                    decrease.enable = false
+                }
+                if (draw.lineWidth < 100)
+                    increase.enable = true
             }
         }
         Button {
@@ -166,11 +180,11 @@ Item {
                 pointSize: 48
             }
             color: "lightgray"
-            dimmedColor: "gray"
+            dimmedColor: "whitesmoke"
             pressedColor: "white"
             padding: 10
             borderRadius: 4
-            enabled: true
+            enable: true
             onClicked: {
                 draw.removeColor(root.currentColor)
             }
