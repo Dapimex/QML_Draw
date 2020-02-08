@@ -25,6 +25,7 @@ Item {
         var ctx = canvas.getContext("2d")
 
         ctx.strokeStyle = line.color
+        ctx.lineCap = "round"
         ctx.lineWidth = line.width
         ctx.beginPath()
         ctx.moveTo(line.points[0].x, line.points[0].y)
